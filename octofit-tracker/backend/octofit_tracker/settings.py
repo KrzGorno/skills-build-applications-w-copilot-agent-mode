@@ -12,7 +12,16 @@ codespace_name = os.environ.get('CODESPACE_NAME')
 allowed_hosts = ['localhost', '127.0.0.1']
 if codespace_name:
     allowed_hosts.append(f"{codespace_name}-8000.app.github.dev")
+
 ALLOWED_HOSTS = allowed_hosts
+
+# --- CORS config for React frontend ---
+from corsheaders.defaults import default_headers
+CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOW_HEADERS = list(default_headers) + [
+    'content-type',
+]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
